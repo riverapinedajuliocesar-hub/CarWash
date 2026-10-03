@@ -1,1045 +1,928 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Banco NovaLatina | Tu banco, siempre contigo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmacia Salud y Bienestar</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   FARMACIA SALUD Y BIENESTAR
+   CSS - Diseño general
+===================================================== */
 
-    <!-- ICONOS -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f1f7f6;
+    color:#263238;
+}
+
+/* ENCABEZADO */
+header{
+    background:linear-gradient(135deg,#087f5b,#1261a0);
+    color:white;
+    padding:18px 25px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 15px rgba(0,0,0,.18);
+}
+
+.header-content{
+    max-width:1300px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    background:white;
+    color:#087f5b;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.logo h1{
+    font-size:22px;
+}
+
+.logo p{
+    font-size:12px;
+    opacity:.9;
+}
+
+/* MENÚ */
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+}
+
+nav button{
+    border:none;
+    background:rgba(255,255,255,.12);
+    color:white;
+    padding:10px 13px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav button:hover,
+nav button.active{
+    background:white;
+    color:#087f5b;
+    transform:translateY(-2px);
+}
+
+/* CONTENEDOR */
+.container{
+    max-width:1300px;
+    margin:auto;
+    padding:25px;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+/* INICIO */
+.hero{
+    background:linear-gradient(135deg,#dff8ef,#e5f2ff);
+    padding:45px;
+    border-radius:20px;
+    margin-bottom:25px;
+    box-shadow:10px 10px 20px rgba(0,0,0,.12);
+}
+
+.hero h2{
+    color:#087f5b;
+    font-size:36px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:18px;
+    max-width:750px;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+/* BOTONES */
+.btn{
+    border:none;
+    padding:11px 17px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+    margin:3px;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:5px 5px 12px rgba(0,0,0,.18);
+}
+
+.btn-primary{
+    background:#087f5b;
+    color:white;
+}
+
+.btn-blue{
+    background:#1261a0;
+    color:white;
+}
+
+.btn-danger{
+    background:#dc3545;
+    color:white;
+}
+
+.btn-warning{
+    background:#f59f00;
+    color:white;
+}
+
+.btn-secondary{
+    background:#6c757d;
+    color:white;
+}
+
+.btn-light{
+    background:white;
+    color:#087f5b;
+    border:1px solid #ddd;
+}
+
+/* TARJETAS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:18px;
+    margin:20px 0;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:10px 10px 20px rgba(0,0,0,.12);
+}
+
+.stat-card{
+    text-align:center;
+    border-left:5px solid #087f5b;
+}
+
+.stat-card .number{
+    font-size:32px;
+    font-weight:bold;
+    color:#1261a0;
+    margin:8px;
+}
+
+/* TÍTULOS */
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    color:#087f5b;
+}
+
+/* FORMULARIOS */
+.form-card{
+    background:white;
+    padding:22px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:10px 10px 20px rgba(0,0,0,.10);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.form-group label{
+    font-weight:bold;
+    font-size:14px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #ccd5d8;
+    border-radius:10px;
+    outline:none;
+    background:white;
+    transition:.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#087f5b;
+    box-shadow:0 0 0 3px rgba(8,127,91,.1);
+}
+
+/* TABLAS */
+.table-container{
+    overflow-x:auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:10px 10px 20px rgba(0,0,0,.10);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:750px;
+}
+
+th{
+    background:#087f5b;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:11px;
+    border-bottom:1px solid #e5e5e5;
+}
+
+tr:hover{
+    background:#f1faf7;
+}
+
+/* PRODUCTOS */
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.product-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:10px 10px 20px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+}
+
+.product-image{
+    height:130px;
+    background:linear-gradient(135deg,#dff8ef,#e5f2ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+}
+
+.product-info{
+    padding:16px;
+}
+
+.product-info h3{
+    color:#087f5b;
+    margin-bottom:8px;
+}
+
+.price{
+    color:#1261a0;
+    font-size:21px;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+.stock{
+    font-size:13px;
+    font-weight:bold;
+}
+
+.stock-low{
+    color:#dc3545;
+}
+
+.stock-ok{
+    color:#087f5b;
+}
+
+/* BARRA DE BÚSQUEDA */
+.search-box{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.search-box input{
+    flex:1;
+}
+
+/* ALERTAS */
+.alert{
+    padding:13px;
+    border-radius:10px;
+    margin:10px 0;
+    font-weight:bold;
+}
+
+.alert-success{
+    background:#d1e7dd;
+    color:#0f5132;
+}
+
+.alert-danger{
+    background:#f8d7da;
+    color:#842029;
+}
+
+.alert-warning{
+    background:#fff3cd;
+    color:#664d03;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-content{
+    background:white;
+    width:100%;
+    max-width:600px;
+    max-height:90vh;
+    overflow:auto;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:10px 10px 30px rgba(0,0,0,.3);
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close{
+    border:none;
+    background:#eee;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+}
+
+/* FACTURA */
+.invoice{
+    background:white;
+    padding:30px;
+    max-width:850px;
+    margin:auto;
+    border-radius:10px;
+}
+
+.invoice-header{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    border-bottom:3px solid #087f5b;
+    padding-bottom:15px;
+    margin-bottom:20px;
+}
+
+.invoice-title{
+    color:#087f5b;
+    font-size:28px;
+}
+
+.invoice table{
+    min-width:0;
+}
+
+.invoice th{
+    background:#087f5b;
+}
+
+.invoice-total{
+    margin-left:auto;
+    max-width:300px;
+    margin-top:20px;
+}
+
+.invoice-total div{
+    display:flex;
+    justify-content:space-between;
+    padding:7px;
+}
+
+.invoice-total .total{
+    font-size:22px;
+    font-weight:bold;
+    border-top:2px solid #087f5b;
+    color:#087f5b;
+}
+
+/* FOOTER */
+footer{
+    background:#263238;
+    color:white;
+    padding:30px;
+    margin-top:40px;
+    text-align:center;
+}
+
+footer p{
+    margin:5px;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+    .header-content{
+        flex-direction:column;
+    }
+
+    nav{
+        width:100%;
+    }
+
+    nav button{
+        font-size:12px;
+    }
+
+    .hero{
+        padding:25px;
+    }
+
+    .hero h2{
+        font-size:27px;
+    }
+
+    .invoice-header{
+        flex-direction:column;
+    }
+}
+
+/* IMPRESIÓN */
+@media print{
+    body{
+        background:white;
+    }
+
+    header,
+    footer,
+    .no-print,
+    nav,
+    .btn,
+    .section-title{
+        display:none !important;
+    }
+
+    .section{
+        display:none !important;
+    }
+
+    #facturaVista{
+        display:block !important;
+    }
+
+    .invoice{
+        box-shadow:none;
+        width:100%;
+        max-width:none;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <!-- =====================================================
-    PANTALLA DE CARGA
-===================================================== -->
-
-<div id="loader">
-
-    <div class="loader-content">
-
-        <div class="loader-logo">
-            <i class="fa-solid fa-building-columns"></i>
-        </div>
-
-        <h1>Banco NovaLatina</h1>
-
-        <p>Preparando tu experiencia bancaria...</p>
-
-        <div class="loader-bar">
-            <div class="loader-progress"></div>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-    BARRA SUPERIOR
-===================================================== -->
-
-<div class="topbar">
-
-    <div>
-        <i class="fa-solid fa-shield-halved"></i>
-        Banco NovaLatina | Banca segura
-    </div>
-
-    <div class="topbar-right">
-
-        <span>
-            <i class="fa-solid fa-phone"></i>
-            800-NOVALATINA
-        </span>
-
-        <span>
-            <i class="fa-solid fa-location-dot"></i>
-            Sucursales
-        </span>
-
-        <span>
-            <i class="fa-solid fa-globe"></i>
-            Español
-        </span>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-    NAVBAR
+     ENCABEZADO
 ===================================================== -->
 
 <header>
+<div class="header-content">
 
-    <nav class="navbar">
+    <div class="logo">
+        <div class="logo-icon">✚</div>
+        <div>
+            <h1>Farmacia Salud y Bienestar</h1>
+            <p>Sistema de Administración y Facturación</p>
+        </div>
+    </div>
 
-        <a href="#inicio" class="logo">
-
-            <div class="logo-icon">
-                <i class="fa-solid fa-building-columns"></i>
-            </div>
-
-            <div>
-                Banco
-                <span>NovaLatina</span>
-            </div>
-
-        </a>
-
-
-        <ul class="nav-menu">
-
-            <li>
-                <a href="#inicio">Inicio</a>
-            </li>
-
-
-            <!-- PRODUCTOS -->
-
-            <li class="dropdown">
-
-                <a href="#productos">
-                    Productos
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="#productos">
-                        <i class="fa-solid fa-piggy-bank"></i>
-                        Cuentas de ahorro
-                    </a>
-
-                    <a href="#tarjetas">
-                        <i class="fa-solid fa-credit-card"></i>
-                        Tarjetas de crédito
-                    </a>
-
-                    <a href="#prestamos">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                        Préstamos
-                    </a>
-
-                    <a href="#remesas">
-                        <i class="fa-solid fa-money-bill-transfer"></i>
-                        Remesas
-                    </a>
-
-                    <a href="#productos">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        Seguros
-                    </a>
-
-                </div>
-
-            </li>
-
-
-            <!-- PAGOS -->
-
-            <li class="dropdown">
-
-                <a href="#pagos">
-                    Pagos
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="#pagos">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                        Pagos en línea
-                    </a>
-
-                    <a href="#pagos">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        Pago de servicios
-                    </a>
-
-                    <a href="#pagos">
-                        <i class="fa-solid fa-wifi"></i>
-                        Telefonía e Internet
-                    </a>
-
-                    <a href="#pagos">
-                        <i class="fa-solid fa-file-invoice"></i>
-                        Facturas
-                    </a>
-
-                    <a href="#pagos">
-                        <i class="fa-solid fa-money-bill"></i>
-                        Transferencias
-                    </a>
-
-                </div>
-
-            </li>
-
-
-            <!-- TARJETAS -->
-
-            <li>
-                <a href="#tarjetas">
-                    Tarjetas
-                </a>
-            </li>
-
-
-            <!-- PRÉSTAMOS -->
-
-            <li>
-                <a href="#prestamos">
-                    Préstamos
-                </a>
-            </li>
-
-
-            <!-- REMESAS -->
-
-            <li>
-                <a href="#remesas">
-                    Remesas
-                </a>
-            </li>
-
-
-            <!-- ATENCIÓN -->
-
-            <li>
-                <a href="#contacto">
-                    Atención
-                </a>
-            </li>
-
-
-            <li>
-                <a href="#banca" class="login-button">
-                    <i class="fa-solid fa-lock"></i>
-                    Banca en línea
-                </a>
-            </li>
-
-        </ul>
-
+    <nav>
+        <button class="active" onclick="mostrarSeccion('inicio',this)">Inicio</button>
+        <button onclick="mostrarSeccion('productos',this)">Productos</button>
+        <button onclick="mostrarSeccion('clientes',this)">Clientes</button>
+        <button onclick="mostrarSeccion('proveedores',this)">Proveedores</button>
+        <button onclick="mostrarSeccion('empleados',this)">Empleados</button>
+        <button onclick="mostrarSeccion('facturacion',this)">Facturación</button>
+        <button onclick="mostrarSeccion('historial',this)">Facturas</button>
+        <button onclick="mostrarSeccion('reportes',this)">Reportes</button>
     </nav>
 
+</div>
 </header>
 
 
-<!-- =====================================================
-    HERO
-===================================================== -->
-
-<section class="hero" id="inicio">
-
-    <div class="hero-content">
-
-        <div class="hero-text">
-
-            <div class="hero-label">
-                <i class="fa-solid fa-star"></i>
-                Una nueva forma de hacer banca
-            </div>
-
-            <h1>
-                Tu dinero.
-                <br>
-                Tus metas.
-                <br>
-                <span>Tu futuro.</span>
-            </h1>
-
-            <p>
-                Soluciones financieras modernas para acompañarte
-                en cada etapa de tu vida. Administra tus cuentas,
-                realiza pagos y descubre productos diseñados para ti.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#productos" class="btn btn-primary">
-                    Conocer productos
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-                <a href="#banca" class="btn btn-light">
-                    <i class="fa-solid fa-lock"></i>
-                    Entrar a banca
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
+<main class="container">
 
 <!-- =====================================================
-    ACCESOS RÁPIDOS
+     INICIO
 ===================================================== -->
 
-<div class="quick-actions">
+<section id="inicio" class="section active">
 
-    <a href="#pagos" class="quick-card">
-
-        <i class="fa-solid fa-money-bill-transfer"></i>
-
-        <h3>Transferir dinero</h3>
-
-        <p>Realiza transferencias fácilmente</p>
-
-    </a>
-
-
-    <a href="#pagos" class="quick-card">
-
-        <i class="fa-solid fa-receipt"></i>
-
-        <h3>Pagar servicios</h3>
-
-        <p>Electricidad, teléfono y más</p>
-
-    </a>
-
-
-    <a href="#tarjetas" class="quick-card">
-
-        <i class="fa-solid fa-credit-card"></i>
-
-        <h3>Mis tarjetas</h3>
-
-        <p>Consulta tus tarjetas</p>
-
-    </a>
-
-
-    <a href="#contacto" class="quick-card">
-
-        <i class="fa-solid fa-headset"></i>
-
-        <h3>Atención al cliente</h3>
-
-        <p>Estamos aquí para ayudarte</p>
-
-    </a>
-
-</div>
-
-
-<!-- =====================================================
-    PRODUCTOS
-===================================================== -->
-
-<section class="section products" id="productos">
-
-    <div class="section-title">
-
-        <small>Soluciones financieras</small>
-
-        <h2>Productos para cada momento</h2>
+    <div class="hero">
+        <h2>Bienvenido a Farmacia Salud y Bienestar 💚</h2>
 
         <p>
-            Elige las soluciones que mejor se adapten a tus
-            objetivos personales, familiares y profesionales.
+            Sistema web para administrar productos, clientes,
+            proveedores, empleados, inventario y facturación.
         </p>
 
+        <button class="btn btn-primary"
+                onclick="mostrarSeccionPorNombre('productos')">
+            🛒 Ver productos
+        </button>
+
+        <button class="btn btn-blue"
+                onclick="mostrarSeccionPorNombre('facturacion')">
+            🧾 Nueva factura
+        </button>
+
+        <button class="btn btn-light"
+                onclick="mostrarSeccionPorNombre('clientes')">
+            👥 Administrar clientes
+        </button>
     </div>
 
+    <div class="cards">
 
-    <div class="product-grid">
-
-        <div class="product-card">
-
-            <div class="product-icon">
-                <i class="fa-solid fa-piggy-bank"></i>
-            </div>
-
-            <h3>Cuentas de ahorro</h3>
-
-            <p>
-                Administra tu dinero y crea el hábito de ahorrar
-                para alcanzar tus próximos objetivos.
-            </p>
-
-            <a href="#" class="product-link">
-                Conocer cuentas →
-            </a>
-
+        <div class="card stat-card">
+            <h3>Productos</h3>
+            <div class="number" id="statProductos">0</div>
+            <p>Registrados</p>
         </div>
 
-
-        <div class="product-card">
-
-            <div class="product-icon">
-                <i class="fa-solid fa-credit-card"></i>
-            </div>
-
-            <h3>Tarjetas de crédito</h3>
-
-            <p>
-                Opciones de tarjetas para compras, beneficios,
-                promociones y administración digital.
-            </p>
-
-            <a href="#tarjetas" class="product-link">
-                Ver tarjetas →
-            </a>
-
+        <div class="card stat-card">
+            <h3>Clientes</h3>
+            <div class="number" id="statClientes">0</div>
+            <p>Registrados</p>
         </div>
 
-
-        <div class="product-card">
-
-            <div class="product-icon">
-                <i class="fa-solid fa-house"></i>
-            </div>
-
-            <h3>Financiamiento de vivienda</h3>
-
-            <p>
-                Soluciones de financiamiento para ayudarte
-                a construir o adquirir tu hogar.
-            </p>
-
-            <a href="#prestamos" class="product-link">
-                Ver opciones →
-            </a>
-
+        <div class="card stat-card">
+            <h3>Facturas</h3>
+            <div class="number" id="statFacturas">0</div>
+            <p>Realizadas</p>
         </div>
 
-
-        <div class="product-card">
-
-            <div class="product-icon">
-                <i class="fa-solid fa-car"></i>
-            </div>
-
-            <h3>Préstamo para vehículo</h3>
-
-            <p>
-                Explora opciones de financiamiento para adquirir
-                un vehículo nuevo o usado.
-            </p>
-
-            <a href="#prestamos" class="product-link">
-                Más información →
-            </a>
-
-        </div>
-
-
-        <div class="product-card">
-
-            <div class="product-icon">
-                <i class="fa-solid fa-money-bill-transfer"></i>
-            </div>
-
-            <h3>Remesas familiares</h3>
-
-            <p>
-                Recibe dinero enviado desde el extranjero y
-                administra tus fondos desde tus cuentas.
-            </p>
-
-            <a href="#remesas" class="product-link">
-                Conocer remesas →
-            </a>
-
-        </div>
-
-
-        <div class="product-card">
-
-            <div class="product-icon">
-                <i class="fa-solid fa-shield-halved"></i>
-            </div>
-
-            <h3>Seguros</h3>
-
-            <p>
-                Conoce opciones de protección para diferentes
-                necesidades personales y familiares.
-            </p>
-
-            <a href="#" class="product-link">
-                Explorar seguros →
-            </a>
-
+        <div class="card stat-card">
+            <h3>Ventas</h3>
+            <div class="number" id="statVentas">$0.00</div>
+            <p>Acumuladas</p>
         </div>
 
     </div>
 
-</section>
-
-
-<!-- =====================================================
-    TARJETAS
-===================================================== -->
-
-<section class="section cards-section" id="tarjetas">
-
-    <div class="cards-container">
-
-        <div>
-
-            <div class="credit-card">
-
-                <div class="card-top">
-
-                    <strong>
-                        NOVALATINA
-                    </strong>
-
-                    <i class="fa-solid fa-wifi"></i>
-
-                </div>
-
-                <div class="chip"></div>
-
-                <div class="card-number">
-                    4589  ••••  ••••  7821
-                </div>
-
-                <div class="card-bottom">
-
-                    <div>
-                        TITULAR
-                        <br>
-                        CLIENTE NOVALATINA
-                    </div>
-
-                    <div>
-                        VENCE
-                        <br>
-                        12/30
-                    </div>
-
-                    <strong>VISA</strong>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="cards-info">
-
-            <small>Tarjetas NovaLatina</small>
-
-            <h2>
-                Una tarjeta para tus planes
-            </h2>
-
-            <p>
-                Consulta opciones de tarjetas de crédito,
-                beneficios, compras en línea y herramientas
-                digitales para administrar tus gastos.
-            </p>
-
-            <ul class="payment-list" style="color:#344054">
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Administración desde banca digital
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Consulta de movimientos
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Opciones de pago digital
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Notificaciones de seguridad
-                </li>
-
-            </ul>
-
-            <button class="btn btn-primary"
-                    onclick="mostrarMensaje('Solicitud de tarjeta iniciada')">
-
-                Solicitar tarjeta
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-    PAGOS EN LÍNEA
-===================================================== -->
-
-<section class="section" id="pagos">
-
-    <div class="section-title">
-
-        <small>Banca digital</small>
-
-        <h2>Pagos en línea</h2>
-
-        <p>
-            Una demostración de cómo podría organizarse
-            un centro de pagos dentro de una plataforma bancaria.
-        </p>
-
-    </div>
-
-
-    <div class="payment-box">
-
-        <div class="payment-info">
-
-            <h2>
-                Paga desde cualquier lugar
-            </h2>
-
-            <p>
-                Administra tus pagos y servicios desde una
-                experiencia digital sencilla.
-            </p>
-
-            <ul class="payment-list">
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Pago de tarjetas
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Pago de préstamos
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Servicios públicos
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Telefonía e Internet
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    Transferencias bancarias
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div class="payment-form">
-
-            <h3 style="margin-bottom:25px;">
-                Realizar pago
-            </h3>
-
-            <div class="form-group">
-
-                <label>
-                    Tipo de pago
-                </label>
-
-                <select id="tipoPago">
-
-                    <option>Tarjeta de crédito</option>
-
-                    <option>Préstamo</option>
-
-                    <option>Electricidad</option>
-
-                    <option>Internet</option>
-
-                    <option>Telefonía</option>
-
-                    <option>Otro servicio</option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Número de referencia
-                </label>
-
-                <input
-                    type="text"
-                    placeholder="Ej. 000123456"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Monto
-                </label>
-
-                <input
-                    type="number"
-                    placeholder="L 0.00"
-                >
-
-            </div>
-
-
-            <button
-                class="btn btn-primary"
-                style="width:100%; justify-content:center;"
-                onclick="procesarPago()">
-
-                <i class="fa-solid fa-lock"></i>
-
-                Continuar pago
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-    REMESAS
-===================================================== -->
-
-<section class="section remesas" id="remesas">
-
-    <div class="remesa-content">
-
-        <div class="remesa-image"></div>
-
-
-        <div class="remesa-text">
-
-            <small style="color:#0075d4;font-weight:bold;">
-                REMESAS FAMILIARES
-            </small>
-
-            <h2>
-                Cerca de los que más quieres
-            </h2>
-
-            <p>
-                Recibe y administra remesas familiares mediante
-                soluciones diseñadas para facilitar el manejo
-                de fondos enviados desde el extranjero.
-            </p>
-
-
-            <div class="remesa-features">
-
-                <div class="feature">
-                    <i class="fa-solid fa-bolt"></i>
-                    Procesos sencillos
-                </div>
-
-                <div class="feature">
-                    <i class="fa-solid fa-mobile-screen"></i>
-                    Banca digital
-                </div>
-
-                <div class="feature">
-                    <i class="fa-solid fa-money-bill"></i>
-                    Disponibilidad de fondos
-                </div>
-
-                <div class="feature">
-                    <i class="fa-solid fa-shield"></i>
-                    Seguridad
-                </div>
-
-            </div>
-
-
-            <button class="btn btn-primary"
-                    onclick="mostrarMensaje('Consulta de remesas iniciada')">
-
-                Consultar remesas
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-    PRÉSTAMOS
-===================================================== -->
-
-<section class="section loans" id="prestamos">
-
-    <div class="section-title">
-
-        <small>Financiamiento</small>
-
-        <h2>Opciones de préstamos</h2>
-
-        <p>
-            Explora diferentes tipos de financiamiento
-            disponibles en este proyecto demostrativo.
-        </p>
-
-    </div>
-
-
-    <div class="loan-grid">
-
-        <div class="loan-card">
-
-            <i class="fa-solid fa-user"
-               style="font-size:30px;color:#0066cc;"></i>
-
-            <h3>Préstamo personal</h3>
-
-            <p>
-                Una alternativa para proyectos personales,
-                gastos planificados u otros objetivos.
-            </p>
-
-            <div class="loan-amount">
-                Financiamiento personal
-            </div>
-
-            <br>
-
-            <button class="btn btn-primary"
-                    onclick="mostrarMensaje('Solicitud de préstamo personal')">
-
-                Solicitar
-
-            </button>
-
-        </div>
-
-
-        <div class="loan-card">
-
-            <i class="fa-solid fa-house"
-            style="font-size:30px;color:#0066cc;"></i>
-
-            <h3>Préstamo de vivienda</h3>
-
-            <p>
-                Una sección dedicada a soluciones de
-                financiamiento habitacional.
-            </p>
-
-            <div class="loan-amount">
-                Financiamiento de vivienda
-            </div>
-
-            <br>
-
-            <button class="btn btn-primary"
-                    onclick="mostrarMensaje('Consulta de préstamo de vivienda')">
-
-                Conocer más
-
-            </button>
-
-        </div>
-
-
-        <div class="loan-card">
-
-            <i class="fa-solid fa-car"
-            style="font-size:30px;color:#0066cc;"></i>
-
-            <h3>Préstamo de auto</h3>
-
-            <p>
-                Opciones de financiamiento para vehículos
-                nuevos o usados.
-            </p>
-
-            <div class="loan-amount">
-                Financiamiento vehicular
-            </div>
-
-            <br>
-
-            <button class="btn btn-primary"
-                    onclick="mostrarMensaje('Consulta de préstamo de auto')">
-
-                Conocer más
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-    BANCA DIGITAL
-===================================================== -->
-
-<section class="section security" id="banca">
-
-    <div class="section-title">
-
-        <small style="color:#51d3ff;">
-            Banca digital
-        </small>
-
-        <h2 style="color:white;">
-            Tu banco en línea
+    <div class="card">
+        <h2 style="color:#087f5b;margin-bottom:15px;">
+            💊 Productos destacados
         </h2>
 
-        <p style="color:#b7c6d9;">
-            Esta sección representa una interfaz demostrativa
-            de acceso a servicios digitales.
-        </p>
-
+        <div id="productosDestacados" class="product-grid"></div>
     </div>
 
-
-    <div class="security-grid">
-
-        <div class="security-card">
-
-            <i class="fa-solid fa-mobile-screen"></i>
-
-            <h3>Desde tu celular</h3>
-
-            <p>
-                Consulta tus productos desde una interfaz
-                diseñada para dispositivos móviles.
-            </p>
-
-        </div>
+</section>
 
 
-        <div class="security-card">
+<!-- =====================================================
+     PRODUCTOS
+===================================================== -->
 
-            <i class="fa-solid fa-shield-halved"></i>
+<section id="productos" class="section">
 
-            <h3>Protección digital</h3>
+    <div class="section-title">
+        <h2>💊 Gestión de Productos</h2>
 
-            <p>
-                Incluye elementos visuales relacionados con
-                seguridad y protección de información.
-            </p>
-
-        </div>
-
-
-        <div class="security-card">
-
-            <i class="fa-solid fa-clock"></i>
-
-            <h3>Disponible 24/7</h3>
-
-            <p>
-                Consulta tus productos y utiliza los servicios
-                digitales cuando lo necesites.
-            </p>
-
-        </div>
-
+        <button class="btn btn-primary"
+                onclick="abrirModalProducto()">
+            + Agregar producto
+        </button>
     </div>
 
+    <div class="search-box">
+        <input type="text"
+               id="buscarProducto"
+               placeholder="🔎 Buscar producto..."
+               oninput="renderProductos()">
 
-    <div style="
-        max-width:500px;
-        margin:45px auto 0;
-        background:white;
-        padding:30px;
-        border-radius:18px;
-        color:#172033;
-    ">
+        <select id="filtroCategoria"
+                onchange="renderProductos()">
+            <option value="">Todas las categorías</option>
+            <option>Analgésicos</option>
+            <option>Antigripales</option>
+            <option>Antibióticos</option>
+            <option>Vitaminas</option>
+            <option>Higiene personal</option>
+            <option>Cuidado de la piel</option>
+            <option>Primeros auxilios</option>
+            <option>Otros</option>
+        </select>
+    </div>
 
-        <h3 style="margin-bottom:20px;">
-            Acceso de clientes
+    <div id="productosGrid" class="product-grid"></div>
+
+</section>
+
+
+<!-- =====================================================
+     CLIENTES
+===================================================== -->
+
+<section id="clientes" class="section">
+
+    <div class="section-title">
+        <h2>👥 Clientes</h2>
+
+        <button class="btn btn-primary"
+                onclick="abrirModalCliente()">
+            + Agregar cliente
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>DNI</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaClientes"></tbody>
+        </table>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROVEEDORES
+===================================================== -->
+
+<section id="proveedores" class="section">
+
+    <div class="section-title">
+        <h2>🚚 Proveedores</h2>
+
+        <button class="btn btn-primary"
+                onclick="abrirModalProveedor()">
+            + Agregar proveedor
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Empresa</th>
+                    <th>Contacto</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaProveedores"></tbody>
+        </table>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EMPLEADOS
+===================================================== -->
+
+<section id="empleados" class="section">
+
+    <div class="section-title">
+        <h2>👨‍💼 Empleados</h2>
+
+        <button class="btn btn-primary"
+                onclick="abrirModalEmpleado()">
+            + Agregar empleado
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaEmpleados"></tbody>
+        </table>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FACTURACIÓN
+===================================================== -->
+
+<section id="facturacion" class="section">
+
+    <div class="section-title">
+        <h2>🧾 Facturación de Clientes</h2>
+
+        <button class="btn btn-secondary"
+                onclick="nuevaFactura()">
+            Nueva factura
+        </button>
+    </div>
+
+    <div class="form-card">
+
+        <h3 style="color:#087f5b;margin-bottom:15px;">
+            Datos del cliente
         </h3>
 
-        <div class="form-group">
+        <div class="form-grid">
 
-            <label>Usuario</label>
+            <div class="form-group">
+                <label>Cliente</label>
 
-            <input
-                type="text"
-                id="usuario"
-                placeholder="Escribe tu usuario"
-            >
+                <select id="factCliente"
+                        onchange="mostrarDatosCliente()">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>DNI</label>
+                <input id="factDni" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" id="factFecha">
+            </div>
+
+            <div class="form-group">
+                <label>Número de factura</label>
+                <input id="factNumero" readonly>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <div class="section-title">
+            <h3 style="color:#087f5b;">
+                Productos de la factura
+            </h3>
+
+            <button class="btn btn-primary"
+                    onclick="agregarProductoFactura()">
+                + Agregar producto
+            </button>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody id="detalleFactura"></tbody>
+
+            </table>
 
         </div>
 
 
-        <div class="form-group">
+        <div class="invoice-total">
 
-            <label>Contraseña</label>
+            <div>
+                <span>Subtotal:</span>
+                <strong id="factSubtotal">$0.00</strong>
+            </div>
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Escribe tu contraseña"
-            >
+            <div>
+                <span>Descuento:</span>
+                <strong id="factDescuento">$0.00</strong>
+            </div>
+
+            <div>
+                <span>ISV (15%):</span>
+                <strong id="factISV">$0.00</strong>
+            </div>
+
+            <div class="total">
+                <span>Total:</span>
+                <strong id="factTotal">$0.00</strong>
+            </div>
 
         </div>
 
+        <br>
 
-        <button
-            class="btn btn-primary"
-            style="width:100%;justify-content:center;"
-            onclick="iniciarSesion()">
-
-            <i class="fa-solid fa-lock"></i>
-
-            Iniciar sesión
-
+        <button class="btn btn-primary"
+                onclick="guardarFactura()">
+            💾 Guardar factura
         </button>
 
-        <p style="
-            text-align:center;
-            margin-top:15px;
-            font-size:12px;
-            color:#6b7280;
-        ">
-            DEMOSTRACIÓN — No introduzcas información bancaria real.
-        </p>
+        <button class="btn btn-blue"
+                onclick="prepararImpresion()">
+            🖨️ Imprimir factura
+        </button>
 
     </div>
 
@@ -1047,77 +930,32 @@
 
 
 <!-- =====================================================
-    ATENCIÓN AL CLIENTE
+     HISTORIAL
 ===================================================== -->
 
-<section class="section" id="contacto">
+<section id="historial" class="section">
 
     <div class="section-title">
-
-        <small>Estamos para ayudarte</small>
-
-        <h2>Atención al cliente</h2>
-
-        <p>
-            Diferentes canales para recibir información
-            y orientación sobre nuestros servicios.
-        </p>
-
+        <h2>📋 Historial de Facturas</h2>
     </div>
 
+    <div class="table-container">
 
-    <div class="contact-grid">
+        <table>
 
-        <div class="contact-card">
+            <thead>
+                <tr>
+                    <th>Factura</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
 
-            <i class="fa-solid fa-phone"></i>
+            <tbody id="tablaFacturas"></tbody>
 
-            <h3>Call Center</h3>
-
-            <p>
-                800-NOVALATINA
-            </p>
-
-        </div>
-
-
-        <div class="contact-card">
-
-            <i class="fa-brands fa-whatsapp"></i>
-
-            <h3>WhatsApp</h3>
-
-            <p>
-                Atención digital
-            </p>
-
-        </div>
-
-
-        <div class="contact-card">
-
-            <i class="fa-solid fa-location-dot"></i>
-
-            <h3>Sucursales</h3>
-
-            <p>
-                Encuentra una agencia
-            </p>
-
-        </div>
-
-
-        <div class="contact-card">
-
-            <i class="fa-solid fa-circle-question"></i>
-
-            <h3>Centro de ayuda</h3>
-
-            <p>
-                Preguntas frecuentes
-            </p>
-
-        </div>
+        </table>
 
     </div>
 
@@ -1125,426 +963,2336 @@
 
 
 <!-- =====================================================
-    NEWSLETTER
+     REPORTES
 ===================================================== -->
 
-<div class="newsletter">
+<section id="reportes" class="section">
 
-    <div>
+    <div class="section-title">
+        <h2>📊 Reportes del sistema</h2>
+    </div>
 
-        <h2>
-            Recibe nuestras novedades
-        </h2>
+    <div class="cards">
 
-        <p>
-            Información educativa, productos y novedades.
-        </p>
+        <div class="card stat-card">
+            <h3>Productos</h3>
+            <div class="number" id="repProductos">0</div>
+        </div>
+
+        <div class="card stat-card">
+            <h3>Clientes</h3>
+            <div class="number" id="repClientes">0</div>
+        </div>
+
+        <div class="card stat-card">
+            <h3>Proveedores</h3>
+            <div class="number" id="repProveedores">0</div>
+        </div>
+
+        <div class="card stat-card">
+            <h3>Empleados</h3>
+            <div class="number" id="repEmpleados">0</div>
+        </div>
+
+        <div class="card stat-card">
+            <h3>Facturas</h3>
+            <div class="number" id="repFacturas">0</div>
+        </div>
+
+        <div class="card stat-card">
+            <h3>Ventas</h3>
+            <div class="number" id="repVentas">$0.00</div>
+        </div>
 
     </div>
 
 
-    <form class="newsletter-form"
-        onsubmit="suscribirse(event)">
+    <div class="form-card">
 
-        <input
-            type="email"
-            id="email"
-            placeholder="Tu correo electrónico"
-            required
-        >
+        <h3 style="color:#087f5b;margin-bottom:15px;">
+            ⚠️ Productos con poco inventario
+        </h3>
 
-        <button class="btn btn-light">
-            Suscribirme
-        </button>
+        <div id="productosBajoStock"></div>
 
-    </form>
+    </div>
 
-</div>
+</section>
 
 
 <!-- =====================================================
-    FOOTER
+     VISTA DE FACTURA PARA IMPRESIÓN
+===================================================== -->
+
+<section id="facturaVista" class="section">
+
+    <div class="invoice" id="contenidoFactura">
+
+        <div class="invoice-header">
+
+            <div>
+                <div class="invoice-title">
+                    FARMACIA SALUD Y BIENESTAR
+                </div>
+
+                <p>💚 Cuidando tu salud</p>
+                <p>Teléfono: 9999-9999</p>
+                <p>Correo: farmacia@email.com</p>
+            </div>
+
+            <div>
+                <h2>FACTURA</h2>
+                <p id="vistaNumero"></p>
+                <p id="vistaFecha"></p>
+            </div>
+
+        </div>
+
+
+        <div style="margin-bottom:20px;">
+
+            <strong>Cliente:</strong>
+            <span id="vistaCliente"></span>
+
+            <br>
+
+            <strong>DNI:</strong>
+            <span id="vistaDni"></span>
+
+        </div>
+
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+
+            <tbody id="vistaDetalle"></tbody>
+
+        </table>
+
+
+        <div class="invoice-total">
+
+            <div>
+                <span>Subtotal:</span>
+                <strong id="vistaSubtotal"></strong>
+            </div>
+
+            <div>
+                <span>ISV 15%:</span>
+                <strong id="vistaISV"></strong>
+            </div>
+
+            <div class="total">
+                <span>TOTAL:</span>
+                <strong id="vistaTotal"></strong>
+            </div>
+
+        </div>
+
+
+        <p style="text-align:center;margin-top:40px;">
+            Gracias por preferir Farmacia Salud y Bienestar.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
 ===================================================== -->
 
 <footer>
 
-    <div class="footer-grid">
+    <h3>💚 Farmacia Salud y Bienestar</h3>
 
+    <p>
+        Sistema de administración y facturación
+    </p>
 
-        <div class="footer-brand">
+    <p>
+        📞 9999-9999 |
+        📧 farmacia@email.com
+    </p>
 
-            <a href="#inicio" class="logo" style="color:white;">
-
-                <div class="logo-icon">
-                    <i class="fa-solid fa-building-columns"></i>
-                </div>
-
-                <div>
-                    Banco
-                    <span>NovaLatina</span>
-                </div>
-
-            </a>
-
-
-            <p>
-                Proyecto web educativo y demostrativo de una
-                plataforma bancaria moderna con servicios
-                digitales, productos financieros y atención
-                al cliente.
-            </p>
-
-
-            <div class="socials">
-
-                <a href="#">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <h3>Productos</h3>
-
-            <ul>
-
-                <li>
-                    <a href="#productos">
-                        Cuentas
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#tarjetas">
-                        Tarjetas
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#prestamos">
-                        Préstamos
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#remesas">
-                        Remesas
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        Seguros
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div>
-
-            <h3>Servicios</h3>
-
-            <ul>
-
-                <li>
-                    <a href="#pagos">
-                        Pagos en línea
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#banca">
-                        Banca digital
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#contacto">
-                        Atención
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        Educación financiera
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        Seguridad
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div>
-
-            <h3>Contacto</h3>
-
-            <ul>
-
-                <li>
-                    <i class="fa-solid fa-phone"></i>
-                    📱 +504 2222-4589
-                    ☎️ +504 2234-7810
-                    
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-envelope"></i>
-                    contacto@novalatina.demo
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-location-dot"></i>
-                    Honduras
-                </li>
-
-                <li>
-                    <i class="fa-solid fa-clock"></i>
-                    Atención digital 24/7
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <div class="copyright">
-
-        <p>
-            © 2026 Banco NovaLatina — Proyecto académico/demostrativo.
-        </p>
-
-        <p style="margin-top:8px;">
-
-            <strong>
-                Creado por: Zoila Esperanza Munguia Rodriguez
-            </strong>
-
-            <br>
-
-            Proyecto Web | VS Code | HTML + CSS 
-
-        </p>
-
-    </div>
+    <p>
+        © 2026 Todos los derechos reservados
+    </p>
 
 </footer>
 
 
 <!-- =====================================================
-    BOTÓN VOLVER ARRIBA
+     MODAL PRODUCTO
 ===================================================== -->
 
-<button id="topButton"
-        onclick="window.scrollTo(0,0)">
+<div id="modalProducto" class="modal">
 
-    <i class="fa-solid fa-arrow-up"></i>
+<div class="modal-content">
 
-</button>
+    <div class="modal-header">
+
+        <h2 id="tituloModalProducto">
+            Agregar producto
+        </h2>
+
+        <button class="close"
+                onclick="cerrarModal('modalProducto')">
+            ×
+        </button>
+
+    </div>
+
+    <input type="hidden" id="productoId">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Nombre</label>
+            <input id="productoNombre">
+        </div>
+
+        <div class="form-group">
+            <label>Categoría</label>
+
+            <select id="productoCategoria">
+                <option>Analgésicos</option>
+                <option>Antigripales</option>
+                <option>Antibióticos</option>
+                <option>Vitaminas</option>
+                <option>Higiene personal</option>
+                <option>Cuidado de la piel</option>
+                <option>Primeros auxilios</option>
+                <option>Otros</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Precio</label>
+            <input type="number"
+                   id="productoPrecio"
+                   min="0"
+                   step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label>Stock</label>
+            <input type="number"
+                   id="productoStock"
+                   min="0">
+        </div>
+
+        <div class="form-group">
+            <label>Proveedor</label>
+            <input id="productoProveedor">
+        </div>
+
+        <div class="form-group">
+            <label>Vencimiento</label>
+            <input type="date"
+                   id="productoVencimiento">
+        </div>
+
+    </div>
+
+    <br>
+
+    <button class="btn btn-primary"
+            onclick="guardarProducto()">
+        💾 Guardar
+    </button>
+
+    <button class="btn btn-secondary"
+            onclick="cerrarModal('modalProducto')">
+        Cancelar
+    </button>
+
+</div>
+
+</div>
 
 
 <!-- =====================================================
-    JAVASCRIPT
+     MODAL CLIENTE
 ===================================================== -->
+
+<div id="modalCliente" class="modal">
+
+<div class="modal-content">
+
+    <div class="modal-header">
+
+        <h2>Agregar cliente</h2>
+
+        <button class="close"
+                onclick="cerrarModal('modalCliente')">
+            ×
+        </button>
+
+    </div>
+
+    <input type="hidden" id="clienteId">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Nombre completo</label>
+            <input id="clienteNombre">
+        </div>
+
+        <div class="form-group">
+            <label>DNI</label>
+            <input id="clienteDni">
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input id="clienteTelefono">
+        </div>
+
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="email"
+                   id="clienteCorreo">
+        </div>
+
+        <div class="form-group">
+            <label>Dirección</label>
+            <input id="clienteDireccion">
+        </div>
+
+    </div>
+
+    <br>
+
+    <button class="btn btn-primary"
+            onclick="guardarCliente()">
+        💾 Guardar
+    </button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL PROVEEDOR
+===================================================== -->
+
+<div id="modalProveedor" class="modal">
+
+<div class="modal-content">
+
+    <div class="modal-header">
+
+        <h2>Agregar proveedor</h2>
+
+        <button class="close"
+                onclick="cerrarModal('modalProveedor')">
+            ×
+        </button>
+
+    </div>
+
+    <input type="hidden" id="proveedorId">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Empresa</label>
+            <input id="proveedorEmpresa">
+        </div>
+
+        <div class="form-group">
+            <label>Contacto</label>
+            <input id="proveedorContacto">
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input id="proveedorTelefono">
+        </div>
+
+        <div class="form-group">
+            <label>Correo</label>
+            <input id="proveedorCorreo">
+        </div>
+
+    </div>
+
+    <br>
+
+    <button class="btn btn-primary"
+            onclick="guardarProveedor()">
+        💾 Guardar
+    </button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL EMPLEADO
+===================================================== -->
+
+<div id="modalEmpleado" class="modal">
+
+<div class="modal-content">
+
+    <div class="modal-header">
+
+        <h2>Agregar empleado</h2>
+
+        <button class="close"
+                onclick="cerrarModal('modalEmpleado')">
+            ×
+        </button>
+
+    </div>
+
+    <input type="hidden" id="empleadoId">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Nombre</label>
+            <input id="empleadoNombre">
+        </div>
+
+        <div class="form-group">
+            <label>Cargo</label>
+            <input id="empleadoCargo">
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input id="empleadoTelefono">
+        </div>
+
+        <div class="form-group">
+            <label>Correo</label>
+            <input id="empleadoCorreo">
+        </div>
+
+        <div class="form-group">
+            <label>Estado</label>
+
+            <select id="empleadoEstado">
+                <option>Activo</option>
+                <option>Inactivo</option>
+            </select>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button class="btn btn-primary"
+            onclick="guardarEmpleado()">
+        💾 Guardar
+    </button>
+
+</div>
+
+</div>
+
 
 <script>
 
-    /* =============================================
-    PANTALLA DE CARGA
-    ============================================= */
+/* =====================================================
+   BASE DE DATOS LOCAL
+===================================================== */
 
-    window.addEventListener("load", function() {
+let productos = JSON.parse(
+    localStorage.getItem("farmacia_productos")
+) || [];
 
-        setTimeout(function() {
+let clientes = JSON.parse(
+    localStorage.getItem("farmacia_clientes")
+) || [];
 
-            document
-                .getElementById("loader")
-                .classList
-                .add("hidden");
+let proveedores = JSON.parse(
+    localStorage.getItem("farmacia_proveedores")
+) || [];
 
-        }, 2200);
+let empleados = JSON.parse(
+    localStorage.getItem("farmacia_empleados")
+) || [];
 
+let facturas = JSON.parse(
+    localStorage.getItem("farmacia_facturas")
+) || [];
+
+let detalleActual = [];
+
+
+/* =====================================================
+   DATOS DE PRUEBA
+===================================================== */
+
+function cargarDatosIniciales(){
+
+    if(localStorage.getItem("farmacia_inicializada")){
+        return;
+    }
+
+    productos = [
+        {
+            id:1,
+            nombre:"Paracetamol 500 mg",
+            categoria:"Analgésicos",
+            precio:45,
+            stock:30,
+            proveedor:"Distribuidora Salud",
+            vencimiento:"2027-05-20",
+            icono:"💊"
+        },
+        {
+            id:2,
+            nombre:"Ibuprofeno 400 mg",
+            categoria:"Analgésicos",
+            precio:60,
+            stock:25,
+            proveedor:"Distribuidora Salud",
+            vencimiento:"2027-03-15",
+            icono:"💊"
+        },
+        {
+            id:3,
+            nombre:"Vitamina C",
+            categoria:"Vitaminas",
+            precio:85,
+            stock:20,
+            proveedor:"Farmacéutica Central",
+            vencimiento:"2027-09-10",
+            icono:"🍊"
+        },
+        {
+            id:4,
+            nombre:"Loratadina",
+            categoria:"Antigripales",
+            precio:55,
+            stock:18,
+            proveedor:"Farmacéutica Central",
+            vencimiento:"2027-01-25",
+            icono:"💊"
+        },
+        {
+            id:5,
+            nombre:"Alcohol Antiséptico",
+            categoria:"Primeros auxilios",
+            precio:40,
+            stock:40,
+            proveedor:"Medical Supply",
+            vencimiento:"2028-02-10",
+            icono:"🧴"
+        },
+        {
+            id:6,
+            nombre:"Gel Antibacterial",
+            categoria:"Higiene personal",
+            precio:35,
+            stock:50,
+            proveedor:"Medical Supply",
+            vencimiento:"2028-04-12",
+            icono:"🧴"
+        },
+        {
+            id:7,
+            nombre:"Crema Hidratante",
+            categoria:"Cuidado de la piel",
+            precio:120,
+            stock:12,
+            proveedor:"Dermosalud",
+            vencimiento:"2027-11-05",
+            icono:"🧴"
+        },
+        {
+            id:8,
+            nombre:"Multivitamínico",
+            categoria:"Vitaminas",
+            precio:150,
+            stock:8,
+            proveedor:"Farmacéutica Central",
+            vencimiento:"2027-08-18",
+            icono:"💊"
+        }
+    ];
+
+    clientes = [
+        {
+            id:1,
+            nombre:"Ana López",
+            dni:"0801-1990-12345",
+            telefono:"9999-1111",
+            correo:"ana@email.com",
+            direccion:"La Lima"
+        },
+        {
+            id:2,
+            nombre:"Carlos Martínez",
+            dni:"0501-1988-23456",
+            telefono:"9999-2222",
+            correo:"carlos@email.com",
+            direccion:"San Pedro Sula"
+        },
+        {
+            id:3,
+            nombre:"María Hernández",
+            dni:"0801-1995-34567",
+            telefono:"9999-3333",
+            correo:"maria@email.com",
+            direccion:"El Progreso"
+        },
+        {
+            id:4,
+            nombre:"José Rivera",
+            dni:"0601-1987-45678",
+            telefono:"9999-4444",
+            correo:"jose@email.com",
+            direccion:"La Lima"
+        },
+        {
+            id:5,
+            nombre:"Sofía Gómez",
+            dni:"0501-2000-56789",
+            telefono:"9999-5555",
+            correo:"sofia@email.com",
+            direccion:"San Pedro Sula"
+        }
+    ];
+
+    proveedores = [
+        {
+            id:1,
+            empresa:"Distribuidora Salud",
+            contacto:"Roberto Díaz",
+            telefono:"2222-1111",
+            correo:"salud@email.com"
+        },
+        {
+            id:2,
+            empresa:"Farmacéutica Central",
+            contacto:"Laura Pérez",
+            telefono:"2222-2222",
+            correo:"central@email.com"
+        },
+        {
+            id:3,
+            empresa:"Medical Supply",
+            contacto:"Pedro López",
+            telefono:"2222-3333",
+            correo:"medical@email.com"
+        }
+    ];
+
+    empleados = [
+        {
+            id:1,
+            nombre:"Laura Pérez",
+            cargo:"Farmacéutica",
+            telefono:"9888-1111",
+            correo:"laura@farmacia.com",
+            estado:"Activo"
+        },
+        {
+            id:2,
+            nombre:"Pedro López",
+            cargo:"Administrador",
+            telefono:"9888-2222",
+            correo:"pedro@farmacia.com",
+            estado:"Activo"
+        },
+        {
+            id:3,
+            nombre:"Sofía Martínez",
+            cargo:"Auxiliar",
+            telefono:"9888-3333",
+            correo:"sofia@farmacia.com",
+            estado:"Activo"
+        }
+    ];
+
+    guardarTodo();
+
+    localStorage.setItem(
+        "farmacia_inicializada",
+        "true"
+    );
+}
+
+
+/* =====================================================
+   GUARDAR BASE DE DATOS
+===================================================== */
+
+function guardarTodo(){
+
+    localStorage.setItem(
+        "farmacia_productos",
+        JSON.stringify(productos)
+    );
+
+    localStorage.setItem(
+        "farmacia_clientes",
+        JSON.stringify(clientes)
+    );
+
+    localStorage.setItem(
+        "farmacia_proveedores",
+        JSON.stringify(proveedores)
+    );
+
+    localStorage.setItem(
+        "farmacia_empleados",
+        JSON.stringify(empleados)
+    );
+
+    localStorage.setItem(
+        "farmacia_facturas",
+        JSON.stringify(facturas)
+    );
+}
+
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+function mostrarSeccion(nombre, boton){
+
+    document.querySelectorAll(".section")
+        .forEach(s => s.classList.remove("active"));
+
+    const seccion = document.getElementById(nombre);
+
+    if(seccion){
+        seccion.classList.add("active");
+    }
+
+    document.querySelectorAll("nav button")
+        .forEach(b => b.classList.remove("active"));
+
+    if(boton){
+        boton.classList.add("active");
+    }
+
+    actualizarTodo();
+}
+
+
+function mostrarSeccionPorNombre(nombre){
+
+    const boton = [...document.querySelectorAll("nav button")]
+        .find(b => b.textContent.toLowerCase().includes(
+            nombre === "facturacion"
+            ? "facturación"
+            : nombre
+        ));
+
+    mostrarSeccion(nombre, boton);
+}
+
+
+/* =====================================================
+   PRODUCTOS
+===================================================== */
+
+function renderProductos(){
+
+    const grid =
+        document.getElementById("productosGrid");
+
+    const busqueda =
+        document.getElementById("buscarProducto")
+        .value
+        .toLowerCase();
+
+    const categoria =
+        document.getElementById("filtroCategoria")
+        .value;
+
+    const filtrados = productos.filter(p => {
+
+        const coincideNombre =
+            p.nombre.toLowerCase()
+            .includes(busqueda);
+
+        const coincideCategoria =
+            !categoria || p.categoria === categoria;
+
+        return coincideNombre && coincideCategoria;
     });
 
+    if(filtrados.length === 0){
 
-    /* =============================================
-    BOTÓN ARRIBA
-    ============================================= */
+        grid.innerHTML =
+            `<div class="alert alert-warning">
+                No se encontraron productos.
+             </div>`;
 
-    window.addEventListener("scroll", function() {
+        return;
+    }
 
-        const button =
-            document.getElementById("topButton");
+    grid.innerHTML = filtrados.map(p => {
 
-        if (window.scrollY > 400) {
+        const bajo = p.stock <= 10;
 
-            button.style.display = "block";
+        return `
+        <div class="product-card">
 
-        } else {
+            <div class="product-image">
+                ${p.icono || "💊"}
+            </div>
 
-            button.style.display = "none";
+            <div class="product-info">
 
+                <h3>${p.nombre}</h3>
+
+                <p>
+                    <strong>Categoría:</strong>
+                    ${p.categoria}
+                </p>
+
+                <div class="price">
+                    L ${Number(p.precio).toFixed(2)}
+                </div>
+
+                <p class="stock ${bajo ? "stock-low" : "stock-ok"}">
+                    Stock: ${p.stock} unidades
+                </p>
+
+                <button class="btn btn-primary"
+                    onclick="agregarAlCarrito(${p.id})">
+                    🛒 Agregar
+                </button>
+
+                <button class="btn btn-warning"
+                    onclick="editarProducto(${p.id})">
+                    ✏️ Editar
+                </button>
+
+                <button class="btn btn-danger"
+                    onclick="eliminarProducto(${p.id})">
+                    🗑️ Eliminar
+                </button>
+
+            </div>
+        </div>`;
+    });
+}
+
+
+function abrirModalProducto(){
+
+    document.getElementById("productoId").value = "";
+    document.getElementById("productoNombre").value = "";
+    document.getElementById("productoPrecio").value = "";
+    document.getElementById("productoStock").value = "";
+    document.getElementById("productoProveedor").value = "";
+    document.getElementById("productoVencimiento").value = "";
+
+    document.getElementById("tituloModalProducto")
+        .textContent = "Agregar producto";
+
+    document.getElementById("modalProducto")
+        .classList.add("show");
+}
+
+
+function guardarProducto(){
+
+    const id =
+        document.getElementById("productoId").value;
+
+    const nombre =
+        document.getElementById("productoNombre").value.trim();
+
+    const categoria =
+        document.getElementById("productoCategoria").value;
+
+    const precio =
+        Number(document.getElementById("productoPrecio").value);
+
+    const stock =
+        Number(document.getElementById("productoStock").value);
+
+    const proveedor =
+        document.getElementById("productoProveedor").value.trim();
+
+    const vencimiento =
+        document.getElementById("productoVencimiento").value;
+
+    if(!nombre || precio < 0 || stock < 0){
+
+        alert("Complete correctamente los datos del producto.");
+
+        return;
+    }
+
+    if(id){
+
+        const producto =
+            productos.find(p => p.id == id);
+
+        producto.nombre = nombre;
+        producto.categoria = categoria;
+        producto.precio = precio;
+        producto.stock = stock;
+        producto.proveedor = proveedor;
+        producto.vencimiento = vencimiento;
+
+    }else{
+
+        productos.push({
+
+            id:Date.now(),
+
+            nombre,
+            categoria,
+            precio,
+            stock,
+            proveedor,
+            vencimiento,
+
+            icono:
+                categoria === "Vitaminas"
+                ? "🍊"
+                : categoria === "Higiene personal"
+                ? "🧴"
+                : "💊"
+        });
+    }
+
+    guardarTodo();
+
+    cerrarModal("modalProducto");
+
+    renderProductos();
+
+    actualizarTodo();
+
+    alert("Producto guardado correctamente.");
+}
+
+
+function editarProducto(id){
+
+    const p =
+        productos.find(p => p.id === id);
+
+    if(!p) return;
+
+    document.getElementById("productoId").value = p.id;
+    document.getElementById("productoNombre").value = p.nombre;
+    document.getElementById("productoCategoria").value = p.categoria;
+    document.getElementById("productoPrecio").value = p.precio;
+    document.getElementById("productoStock").value = p.stock;
+    document.getElementById("productoProveedor").value = p.proveedor;
+    document.getElementById("productoVencimiento").value = p.vencimiento;
+
+    document.getElementById("tituloModalProducto")
+        .textContent = "Editar producto";
+
+    document.getElementById("modalProducto")
+        .classList.add("show");
+}
+
+
+function eliminarProducto(id){
+
+    const p =
+        productos.find(p => p.id === id);
+
+    if(!p) return;
+
+    if(!confirm(
+        `¿Está seguro de eliminar "${p.nombre}"?`
+    )){
+        return;
+    }
+
+    productos =
+        productos.filter(p => p.id !== id);
+
+    guardarTodo();
+
+    renderProductos();
+
+    actualizarTodo();
+}
+
+
+/* =====================================================
+   CLIENTES
+===================================================== */
+
+function renderClientes(){
+
+    const tabla =
+        document.getElementById("tablaClientes");
+
+    tabla.innerHTML = clientes.map(c => `
+
+        <tr>
+
+            <td>${c.id}</td>
+            <td>${c.nombre}</td>
+            <td>${c.dni}</td>
+            <td>${c.telefono}</td>
+            <td>${c.correo}</td>
+            <td>${c.direccion}</td>
+
+            <td>
+
+                <button class="btn btn-warning"
+                    onclick="editarCliente(${c.id})">
+                    ✏️
+                </button>
+
+                <button class="btn btn-danger"
+                    onclick="eliminarCliente(${c.id})">
+                    🗑️
+                </button>
+
+            </td>
+
+        </tr>
+
+    `).join("");
+}
+
+
+function abrirModalCliente(){
+
+    document.getElementById("clienteId").value = "";
+    document.getElementById("clienteNombre").value = "";
+    document.getElementById("clienteDni").value = "";
+    document.getElementById("clienteTelefono").value = "";
+    document.getElementById("clienteCorreo").value = "";
+    document.getElementById("clienteDireccion").value = "";
+
+    document.getElementById("modalCliente")
+        .classList.add("show");
+}
+
+
+function guardarCliente(){
+
+    const id =
+        document.getElementById("clienteId").value;
+
+    const nombre =
+        document.getElementById("clienteNombre").value.trim();
+
+    const dni =
+        document.getElementById("clienteDni").value.trim();
+
+    const telefono =
+        document.getElementById("clienteTelefono").value.trim();
+
+    const correo =
+        document.getElementById("clienteCorreo").value.trim();
+
+    const direccion =
+        document.getElementById("clienteDireccion").value.trim();
+
+    if(!nombre || !dni){
+
+        alert("Nombre y DNI son obligatorios.");
+
+        return;
+    }
+
+    if(id){
+
+        const c =
+            clientes.find(c => c.id == id);
+
+        c.nombre = nombre;
+        c.dni = dni;
+        c.telefono = telefono;
+        c.correo = correo;
+        c.direccion = direccion;
+
+    }else{
+
+        clientes.push({
+
+            id:Date.now(),
+            nombre,
+            dni,
+            telefono,
+            correo,
+            direccion
+
+        });
+    }
+
+    guardarTodo();
+
+    cerrarModal("modalCliente");
+
+    renderClientes();
+
+    actualizarTodo();
+
+    alert("Cliente guardado correctamente.");
+}
+
+
+function editarCliente(id){
+
+    const c =
+        clientes.find(c => c.id === id);
+
+    if(!c) return;
+
+    document.getElementById("clienteId").value = c.id;
+    document.getElementById("clienteNombre").value = c.nombre;
+    document.getElementById("clienteDni").value = c.dni;
+    document.getElementById("clienteTelefono").value = c.telefono;
+    document.getElementById("clienteCorreo").value = c.correo;
+    document.getElementById("clienteDireccion").value = c.direccion;
+
+    document.getElementById("modalCliente")
+        .classList.add("show");
+}
+
+
+function eliminarCliente(id){
+
+    if(!confirm("¿Eliminar este cliente?")){
+        return;
+    }
+
+    clientes =
+        clientes.filter(c => c.id !== id);
+
+    guardarTodo();
+
+    renderClientes();
+
+    actualizarTodo();
+}
+
+
+/* =====================================================
+   PROVEEDORES
+===================================================== */
+
+function renderProveedores(){
+
+    const tabla =
+        document.getElementById("tablaProveedores");
+
+    tabla.innerHTML = proveedores.map(p => `
+
+        <tr>
+
+            <td>${p.id}</td>
+            <td>${p.empresa}</td>
+            <td>${p.contacto}</td>
+            <td>${p.telefono}</td>
+            <td>${p.correo}</td>
+
+            <td>
+
+                <button class="btn btn-warning"
+                    onclick="editarProveedor(${p.id})">
+                    ✏️
+                </button>
+
+                <button class="btn btn-danger"
+                    onclick="eliminarProveedor(${p.id})">
+                    🗑️
+                </button>
+
+            </td>
+
+        </tr>
+
+    `).join("");
+}
+
+
+function abrirModalProveedor(){
+
+    document.getElementById("proveedorId").value = "";
+    document.getElementById("proveedorEmpresa").value = "";
+    document.getElementById("proveedorContacto").value = "";
+    document.getElementById("proveedorTelefono").value = "";
+    document.getElementById("proveedorCorreo").value = "";
+
+    document.getElementById("modalProveedor")
+        .classList.add("show");
+}
+
+
+function guardarProveedor(){
+
+    const id =
+        document.getElementById("proveedorId").value;
+
+    const empresa =
+        document.getElementById("proveedorEmpresa").value.trim();
+
+    const contacto =
+        document.getElementById("proveedorContacto").value.trim();
+
+    const telefono =
+        document.getElementById("proveedorTelefono").value.trim();
+
+    const correo =
+        document.getElementById("proveedorCorreo").value.trim();
+
+    if(!empresa){
+
+        alert("La empresa es obligatoria.");
+
+        return;
+    }
+
+    if(id){
+
+        const p =
+            proveedores.find(p => p.id == id);
+
+        p.empresa = empresa;
+        p.contacto = contacto;
+        p.telefono = telefono;
+        p.correo = correo;
+
+    }else{
+
+        proveedores.push({
+
+            id:Date.now(),
+            empresa,
+            contacto,
+            telefono,
+            correo
+
+        });
+    }
+
+    guardarTodo();
+
+    cerrarModal("modalProveedor");
+
+    renderProveedores();
+
+    actualizarTodo();
+
+    alert("Proveedor guardado correctamente.");
+}
+
+
+function editarProveedor(id){
+
+    const p =
+        proveedores.find(p => p.id === id);
+
+    if(!p) return;
+
+    document.getElementById("proveedorId").value = p.id;
+    document.getElementById("proveedorEmpresa").value = p.empresa;
+    document.getElementById("proveedorContacto").value = p.contacto;
+    document.getElementById("proveedorTelefono").value = p.telefono;
+    document.getElementById("proveedorCorreo").value = p.correo;
+
+    document.getElementById("modalProveedor")
+        .classList.add("show");
+}
+
+
+function eliminarProveedor(id){
+
+    if(!confirm("¿Eliminar este proveedor?")){
+        return;
+    }
+
+    proveedores =
+        proveedores.filter(p => p.id !== id);
+
+    guardarTodo();
+
+    renderProveedores();
+
+    actualizarTodo();
+}
+
+
+/* =====================================================
+   EMPLEADOS
+===================================================== */
+
+function renderEmpleados(){
+
+    const tabla =
+        document.getElementById("tablaEmpleados");
+
+    tabla.innerHTML = empleados.map(e => `
+
+        <tr>
+
+            <td>${e.id}</td>
+            <td>${e.nombre}</td>
+            <td>${e.cargo}</td>
+            <td>${e.telefono}</td>
+            <td>${e.correo}</td>
+            <td>${e.estado}</td>
+
+            <td>
+
+                <button class="btn btn-warning"
+                    onclick="editarEmpleado(${e.id})">
+                    ✏️
+                </button>
+
+                <button class="btn btn-danger"
+                    onclick="eliminarEmpleado(${e.id})">
+                    🗑️
+                </button>
+
+            </td>
+
+        </tr>
+
+    `).join("");
+}
+
+
+function abrirModalEmpleado(){
+
+    document.getElementById("empleadoId").value = "";
+    document.getElementById("empleadoNombre").value = "";
+    document.getElementById("empleadoCargo").value = "";
+    document.getElementById("empleadoTelefono").value = "";
+    document.getElementById("empleadoCorreo").value = "";
+    document.getElementById("empleadoEstado").value = "Activo";
+
+    document.getElementById("modalEmpleado")
+        .classList.add("show");
+}
+
+
+function guardarEmpleado(){
+
+    const id =
+        document.getElementById("empleadoId").value;
+
+    const nombre =
+        document.getElementById("empleadoNombre").value.trim();
+
+    const cargo =
+        document.getElementById("empleadoCargo").value.trim();
+
+    const telefono =
+        document.getElementById("empleadoTelefono").value.trim();
+
+    const correo =
+        document.getElementById("empleadoCorreo").value.trim();
+
+    const estado =
+        document.getElementById("empleadoEstado").value;
+
+    if(!nombre || !cargo){
+
+        alert("Nombre y cargo son obligatorios.");
+
+        return;
+    }
+
+    if(id){
+
+        const e =
+            empleados.find(e => e.id == id);
+
+        e.nombre = nombre;
+        e.cargo = cargo;
+        e.telefono = telefono;
+        e.correo = correo;
+        e.estado = estado;
+
+    }else{
+
+        empleados.push({
+
+            id:Date.now(),
+            nombre,
+            cargo,
+            telefono,
+            correo,
+            estado
+
+        });
+    }
+
+    guardarTodo();
+
+    cerrarModal("modalEmpleado");
+
+    renderEmpleados();
+
+    actualizarTodo();
+
+    alert("Empleado guardado correctamente.");
+}
+
+
+function editarEmpleado(id){
+
+    const e =
+        empleados.find(e => e.id === id);
+
+    if(!e) return;
+
+    document.getElementById("empleadoId").value = e.id;
+    document.getElementById("empleadoNombre").value = e.nombre;
+    document.getElementById("empleadoCargo").value = e.cargo;
+    document.getElementById("empleadoTelefono").value = e.telefono;
+    document.getElementById("empleadoCorreo").value = e.correo;
+    document.getElementById("empleadoEstado").value = e.estado;
+
+    document.getElementById("modalEmpleado")
+        .classList.add("show");
+}
+
+
+function eliminarEmpleado(id){
+
+    if(!confirm("¿Eliminar este empleado?")){
+        return;
+    }
+
+    empleados =
+        empleados.filter(e => e.id !== id);
+
+    guardarTodo();
+
+    renderEmpleados();
+
+    actualizarTodo();
+}
+
+
+/* =====================================================
+   CARRITO
+===================================================== */
+
+function agregarAlCarrito(id){
+
+    const producto =
+        productos.find(p => p.id === id);
+
+    if(!producto) return;
+
+    if(producto.stock <= 0){
+
+        alert("Este producto no tiene existencia.");
+
+        return;
+    }
+
+    mostrarSeccionPorNombre("facturacion");
+
+    agregarProductoFactura(id);
+}
+
+
+function agregarProductoFactura(idProducto = null){
+
+    if(!idProducto){
+
+        if(productos.length === 0){
+
+            alert("No existen productos.");
+
+            return;
         }
 
+        idProducto = productos[0].id;
+    }
+
+    const producto =
+        productos.find(p => p.id == idProducto);
+
+    if(!producto) return;
+
+    const existente =
+        detalleActual.find(d => d.productoId === producto.id);
+
+    if(existente){
+
+        if(existente.cantidad >= producto.stock){
+
+            alert("No hay suficiente stock.");
+
+            return;
+        }
+
+        existente.cantidad++;
+
+    }else{
+
+        detalleActual.push({
+
+            productoId:producto.id,
+            cantidad:1
+
+        });
+    }
+
+    renderDetalleFactura();
+}
+
+
+function eliminarProductoFactura(index){
+
+    detalleActual.splice(index,1);
+
+    renderDetalleFactura();
+}
+
+
+function cambiarCantidad(index, cantidad){
+
+    cantidad = Number(cantidad);
+
+    const item =
+        detalleActual[index];
+
+    const producto =
+        productos.find(p => p.id === item.productoId);
+
+    if(cantidad < 1){
+
+        item.cantidad = 1;
+
+    }else if(cantidad > producto.stock){
+
+        alert("Cantidad superior al stock disponible.");
+
+        item.cantidad = producto.stock;
+
+    }else{
+
+        item.cantidad = cantidad;
+    }
+
+    renderDetalleFactura();
+}
+
+
+/* =====================================================
+   DETALLE DE FACTURA
+===================================================== */
+
+function renderDetalleFactura(){
+
+    const tabla =
+        document.getElementById("detalleFactura");
+
+    if(detalleActual.length === 0){
+
+        tabla.innerHTML = `
+        <tr>
+            <td colspan="5"
+                style="text-align:center;">
+                No hay productos agregados.
+            </td>
+        </tr>`;
+
+        calcularFactura();
+
+        return;
+    }
+
+    tabla.innerHTML =
+        detalleActual.map((item,index) => {
+
+            const p =
+                productos.find(
+                    p => p.id === item.productoId
+                );
+
+            const subtotal =
+                item.cantidad * Number(p.precio);
+
+            return `
+
+            <tr>
+
+                <td>
+                    <select
+                        onchange="cambiarProductoFactura(${index},this.value)">
+
+                        ${productos.map(x => `
+                            <option
+                                value="${x.id}"
+                                ${x.id === p.id ? "selected" : ""}>
+                                ${x.nombre}
+                            </option>
+                        `).join("")}
+
+                    </select>
+                </td>
+
+                <td>
+                    <input
+                        type="number"
+                        min="1"
+                        max="${p.stock}"
+                        value="${item.cantidad}"
+                        onchange="cambiarCantidad(${index},this.value)"
+                        style="width:80px;">
+                </td>
+
+                <td>
+                    L ${Number(p.precio).toFixed(2)}
+                </td>
+
+                <td>
+                    L ${subtotal.toFixed(2)}
+                </td>
+
+                <td>
+
+                    <button class="btn btn-danger"
+                        onclick="eliminarProductoFactura(${index})">
+                        🗑️
+                    </button>
+
+                </td>
+
+            </tr>`;
+        }).join("");
+
+    calcularFactura();
+}
+
+
+function cambiarProductoFactura(index,id){
+
+    const producto =
+        productos.find(p => p.id == id);
+
+    if(!producto) return;
+
+    detalleActual[index].productoId =
+        producto.id;
+
+    detalleActual[index].cantidad = 1;
+
+    renderDetalleFactura();
+}
+
+
+/* =====================================================
+   CÁLCULO DE FACTURA
+===================================================== */
+
+function calcularFactura(){
+
+    let subtotal = 0;
+
+    detalleActual.forEach(item => {
+
+        const p =
+            productos.find(
+                p => p.id === item.productoId
+            );
+
+        if(p){
+            subtotal +=
+                Number(p.precio) * item.cantidad;
+        }
     });
 
+    const descuento = 0;
 
-    /* =============================================
-    MENSAJES
-    ============================================= */
+    const impuesto =
+        (subtotal - descuento) * 0.15;
 
-    function mostrarMensaje(mensaje) {
+    const total =
+        subtotal - descuento + impuesto;
 
-        alert(
-            "Banco NovaLatina\n\n" +
-            mensaje +
-            "\n\nEsta función es demostrativa."
-        );
+    document.getElementById("factSubtotal")
+        .textContent = "L " + subtotal.toFixed(2);
 
+    document.getElementById("factDescuento")
+        .textContent = "L " + descuento.toFixed(2);
+
+    document.getElementById("factISV")
+        .textContent = "L " + impuesto.toFixed(2);
+
+    document.getElementById("factTotal")
+        .textContent = "L " + total.toFixed(2);
+
+    return {
+        subtotal,
+        descuento,
+        impuesto,
+        total
+    };
+}
+
+
+/* =====================================================
+   CLIENTE DE FACTURA
+===================================================== */
+
+function cargarClientesFactura(){
+
+    const select =
+        document.getElementById("factCliente");
+
+    select.innerHTML =
+        `<option value="">Seleccione un cliente</option>` +
+        clientes.map(c => `
+            <option value="${c.id}">
+                ${c.nombre}
+            </option>
+        `).join("");
+}
+
+
+function mostrarDatosCliente(){
+
+    const id =
+        Number(document.getElementById("factCliente").value);
+
+    const cliente =
+        clientes.find(c => c.id === id);
+
+    document.getElementById("factDni").value =
+        cliente ? cliente.dni : "";
+}
+
+
+/* =====================================================
+   FACTURACIÓN
+===================================================== */
+
+function generarNumeroFactura(){
+
+    return "FAC-" +
+        String(facturas.length + 1)
+        .padStart(5,"0");
+}
+
+
+function prepararNuevaFactura(){
+
+    document.getElementById("factNumero").value =
+        generarNumeroFactura();
+
+    document.getElementById("factFecha").value =
+        new Date().toISOString().split("T")[0];
+
+    cargarClientesFactura();
+
+    detalleActual = [];
+
+    renderDetalleFactura();
+
+    document.getElementById("factCliente").value = "";
+
+    document.getElementById("factDni").value = "";
+}
+
+
+function nuevaFactura(){
+
+    prepararNuevaFactura();
+
+    mostrarSeccionPorNombre("facturacion");
+}
+
+
+function guardarFactura(){
+
+    const clienteId =
+        Number(document.getElementById("factCliente").value);
+
+    const cliente =
+        clientes.find(c => c.id === clienteId);
+
+    if(!cliente){
+
+        alert("Debe seleccionar un cliente.");
+
+        return;
     }
 
+    if(detalleActual.length === 0){
 
-    /* =============================================
-    PAGOS
-    ============================================= */
+        alert("Debe agregar al menos un producto.");
 
-    function procesarPago() {
-
-        const tipo =
-            document.getElementById("tipoPago").value;
-
-        alert(
-            "Pago seleccionado:\n\n" +
-            tipo +
-            "\n\n" +
-            "Esta es una demostración. " +
-            "No se realizará ningún pago real."
-        );
-
+        return;
     }
 
+    /* Verificar stock */
 
-    /* =============================================
-    LOGIN
-    ============================================= */
+    for(const item of detalleActual){
 
-    function iniciarSesion() {
+        const producto =
+            productos.find(
+                p => p.id === item.productoId
+            );
 
-        const usuario =
-            document.getElementById("usuario").value;
-
-        const password =
-            document.getElementById("password").value;
-
-        if (usuario === "" || password === "") {
+        if(!producto ||
+           item.cantidad > producto.stock){
 
             alert(
-                "Por favor completa los campos."
+                "Stock insuficiente para: " +
+                (producto ? producto.nombre : "")
             );
 
             return;
-
         }
-
-        alert(
-            "Demostración de banca digital.\n\n" +
-            "No se realizará ninguna conexión bancaria."
-        );
-
     }
 
+    const calculo =
+        calcularFactura();
 
-    /* =============================================
-    NEWSLETTER
-    ============================================= */
+    const factura = {
 
-    function suscribirse(event) {
+        id:Date.now(),
 
-        event.preventDefault();
+        numero:
+            document.getElementById("factNumero").value,
 
-        const email =
-            document.getElementById("email").value;
+        fecha:
+            document.getElementById("factFecha").value,
 
-        alert(
-            "¡Gracias!\n\n" +
-            email +
-            "\n\n" +
-            "Tu suscripción es demostrativa."
-        );
+        clienteId:cliente.id,
 
-        document
-            .getElementById("email")
-            .value = "";
+        cliente:cliente.nombre,
 
+        dni:cliente.dni,
+
+        productos:
+            detalleActual.map(item => {
+
+                const p =
+                    productos.find(
+                        p => p.id === item.productoId
+                    );
+
+                return {
+
+                    productoId:p.id,
+
+                    nombre:p.nombre,
+
+                    cantidad:item.cantidad,
+
+                    precio:Number(p.precio),
+
+                    subtotal:
+                        Number(p.precio) *
+                        item.cantidad
+                };
+
+            }),
+
+        subtotal:calculo.subtotal,
+
+        descuento:calculo.descuento,
+
+        impuesto:calculo.impuesto,
+
+        total:calculo.total
+
+    };
+
+
+    /* Descontar inventario */
+
+    factura.productos.forEach(item => {
+
+        const producto =
+            productos.find(
+                p => p.id === item.productoId
+            );
+
+        producto.stock -= item.cantidad;
+    });
+
+
+    facturas.push(factura);
+
+    guardarTodo();
+
+    renderHistorial();
+
+    actualizarTodo();
+
+    prepararVistaFactura(factura);
+
+    alert(
+        "Factura guardada correctamente.\n\n" +
+        "Número: " + factura.numero
+    );
+
+    detalleActual = [];
+
+    renderDetalleFactura();
+}
+
+
+/* =====================================================
+   HISTORIAL DE FACTURAS
+===================================================== */
+
+function renderHistorial(){
+
+    const tabla =
+        document.getElementById("tablaFacturas");
+
+    if(facturas.length === 0){
+
+        tabla.innerHTML = `
+        <tr>
+            <td colspan="5"
+                style="text-align:center;">
+                No existen facturas.
+            </td>
+        </tr>`;
+
+        return;
     }
 
+    tabla.innerHTML =
+        [...facturas].reverse().map(f => `
 
-    /* =============================================
-    sANIMACIÓN DE ENTRADA
-    ============================================= */
+        <tr>
 
-    const observer =
-        new IntersectionObserver(
-            (entries) => {
+            <td>${f.numero}</td>
 
-                entries.forEach(entry => {
+            <td>${f.fecha}</td>
 
-                    if (entry.isIntersecting) {
+            <td>${f.cliente}</td>
 
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
+            <td>
+                L ${Number(f.total).toFixed(2)}
+            </td>
 
-                    }
+            <td>
 
-                });
+                <button class="btn btn-blue"
+                    onclick="verFactura(${f.id})">
+                    👁️ Ver
+                </button>
 
-            },
-            {
-                threshold: .12
+                <button class="btn btn-danger"
+                    onclick="eliminarFactura(${f.id})">
+                    🗑️
+                </button>
+
+            </td>
+
+        </tr>
+
+    `).join("");
+}
+
+
+function verFactura(id){
+
+    const factura =
+        facturas.find(f => f.id === id);
+
+    if(!factura) return;
+
+    prepararVistaFactura(factura);
+
+    mostrarSeccion("facturaVista",null);
+
+    setTimeout(() => {
+
+        window.print();
+
+        mostrarSeccionPorNombre("historial");
+
+    },300);
+}
+
+
+function eliminarFactura(id){
+
+    if(!confirm(
+        "¿Está seguro de eliminar esta factura del historial?"
+    )){
+        return;
+    }
+
+    facturas =
+        facturas.filter(f => f.id !== id);
+
+    guardarTodo();
+
+    renderHistorial();
+
+    actualizarTodo();
+}
+
+
+/* =====================================================
+   VISTA DE FACTURA
+===================================================== */
+
+function prepararVistaFactura(factura){
+
+    document.getElementById("vistaNumero")
+        .textContent =
+        "No. " + factura.numero;
+
+    document.getElementById("vistaFecha")
+        .textContent =
+        "Fecha: " + factura.fecha;
+
+    document.getElementById("vistaCliente")
+        .textContent =
+        factura.cliente;
+
+    document.getElementById("vistaDni")
+        .textContent =
+        factura.dni;
+
+    document.getElementById("vistaDetalle")
+        .innerHTML =
+        factura.productos.map(p => `
+
+        <tr>
+
+            <td>${p.nombre}</td>
+
+            <td>${p.cantidad}</td>
+
+            <td>
+                L ${Number(p.precio).toFixed(2)}
+            </td>
+
+            <td>
+                L ${Number(p.subtotal).toFixed(2)}
+            </td>
+
+        </tr>
+
+    `).join("");
+
+    document.getElementById("vistaSubtotal")
+        .textContent =
+        "L " + Number(factura.subtotal).toFixed(2);
+
+    document.getElementById("vistaISV")
+        .textContent =
+        "L " + Number(factura.impuesto).toFixed(2);
+
+    document.getElementById("vistaTotal")
+        .textContent =
+        "L " + Number(factura.total).toFixed(2);
+}
+
+
+function prepararImpresion(){
+
+    if(detalleActual.length === 0){
+
+        alert("No hay productos en la factura.");
+
+        return;
+    }
+
+    const clienteId =
+        Number(document.getElementById("factCliente").value);
+
+    const cliente =
+        clientes.find(c => c.id === clienteId);
+
+    if(!cliente){
+
+        alert("Seleccione un cliente.");
+
+        return;
+    }
+
+    const calculo =
+        calcularFactura();
+
+    const facturaTemporal = {
+
+        numero:
+            document.getElementById("factNumero").value,
+
+        fecha:
+            document.getElementById("factFecha").value,
+
+        cliente:cliente.nombre,
+
+        dni:cliente.dni,
+
+        productos:
+            detalleActual.map(item => {
+
+                const p =
+                    productos.find(
+                        p => p.id === item.productoId
+                    );
+
+                return {
+
+                    nombre:p.nombre,
+
+                    cantidad:item.cantidad,
+
+                    precio:p.precio,
+
+                    subtotal:
+                        p.precio * item.cantidad
+                };
+            }),
+
+        subtotal:calculo.subtotal,
+
+        impuesto:calculo.impuesto,
+
+        total:calculo.total
+    };
+
+    prepararVistaFactura(facturaTemporal);
+
+    mostrarSeccion("facturaVista",null);
+
+    setTimeout(() => {
+        window.print();
+        mostrarSeccionPorNombre("facturacion");
+    },300);
+}
+
+
+/* =====================================================
+   REPORTES
+===================================================== */
+
+function renderReportes(){
+
+    const ventas =
+        facturas.reduce(
+            (sum,f) => sum + Number(f.total),
+            0
+        );
+
+    document.getElementById("repProductos")
+        .textContent = productos.length;
+
+    document.getElementById("repClientes")
+        .textContent = clientes.length;
+
+    document.getElementById("repProveedores")
+        .textContent = proveedores.length;
+
+    document.getElementById("repEmpleados")
+        .textContent = empleados.length;
+
+    document.getElementById("repFacturas")
+        .textContent = facturas.length;
+
+    document.getElementById("repVentas")
+        .textContent =
+        "L " + ventas.toFixed(2);
+
+
+    const bajos =
+        productos.filter(p => p.stock <= 10);
+
+    const contenedor =
+        document.getElementById("productosBajoStock");
+
+    if(bajos.length === 0){
+
+        contenedor.innerHTML =
+            `<div class="alert alert-success">
+                ✓ No existen productos con stock bajo.
+             </div>`;
+
+    }else{
+
+        contenedor.innerHTML =
+            bajos.map(p => `
+
+            <div class="alert alert-warning">
+
+                ⚠️ <strong>${p.nombre}</strong>
+
+                — Stock disponible:
+                ${p.stock}
+
+            </div>
+
+        `).join("");
+    }
+}
+
+
+/* =====================================================
+   ESTADÍSTICAS
+===================================================== */
+
+function actualizarEstadisticas(){
+
+    const ventas =
+        facturas.reduce(
+            (sum,f) => sum + Number(f.total),
+            0
+        );
+
+    document.getElementById("statProductos")
+        .textContent = productos.length;
+
+    document.getElementById("statClientes")
+        .textContent = clientes.length;
+
+    document.getElementById("statFacturas")
+        .textContent = facturas.length;
+
+    document.getElementById("statVentas")
+        .textContent =
+        "L " + ventas.toFixed(2);
+}
+
+
+/* =====================================================
+   PRODUCTOS DESTACADOS
+===================================================== */
+
+function renderDestacados(){
+
+    const contenedor =
+        document.getElementById("productosDestacados");
+
+    const destacados =
+        productos.slice(0,4);
+
+    contenedor.innerHTML =
+        destacados.map(p => `
+
+        <div class="product-card">
+
+            <div class="product-image">
+                ${p.icono || "💊"}
+            </div>
+
+            <div class="product-info">
+
+                <h3>${p.nombre}</h3>
+
+                <p>${p.categoria}</p>
+
+                <div class="price">
+                    L ${Number(p.precio).toFixed(2)}
+                </div>
+
+                <button class="btn btn-primary"
+                    onclick="agregarAlCarrito(${p.id})">
+                    🛒 Comprar
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+}
+
+
+/* =====================================================
+   MODALES
+===================================================== */
+
+function cerrarModal(id){
+
+    document.getElementById(id)
+        .classList.remove("show");
+}
+
+
+/* =====================================================
+   ACTUALIZAR TODO
+===================================================== */
+
+function actualizarTodo(){
+
+    renderProductos();
+
+    renderClientes();
+
+    renderProveedores();
+
+    renderEmpleados();
+
+    renderHistorial();
+
+    renderReportes();
+
+    renderDestacados();
+
+    actualizarEstadisticas();
+
+    cargarClientesFactura();
+}
+
+
+/* =====================================================
+   INICIO DEL SISTEMA
+===================================================== */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    cargarDatosIniciales();
+
+    actualizarTodo();
+
+    prepararNuevaFactura();
+
+});
+
+
+/* =====================================================
+   CERRAR MODALES AL HACER CLICK AFUERA
+===================================================== */
+
+window.addEventListener("click",function(event){
+
+    document.querySelectorAll(".modal")
+        .forEach(modal => {
+
+            if(event.target === modal){
+
+                modal.classList.remove("show");
+
             }
-        );
-
-
-    document
-        .querySelectorAll(
-            ".product-card, .loan-card, .contact-card, .security-card"
-        )
-        .forEach(element => {
-
-            element.style.opacity = "0";
-            element.style.transform = "translateY(30px)";
-            element.style.transition = "opacity .6s ease, transform .6s ease";
-
-            observer.observe(element);
 
         });
+
+});
 
 </script>
 
